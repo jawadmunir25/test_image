@@ -27,6 +27,9 @@
     "fs": "0.0.1-security",
     "helmet": "^3.22.1",
     "https": "^1.0.0",
-    "lodash": "^4.17.15"
+    "joi": "^17.4.2",
+    "joi-objectid": "^4.0.2",
+    "lodash": "^4.17.15",
+    "multer": "^1.4.3"
   }
 }

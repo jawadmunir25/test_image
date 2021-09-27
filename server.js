@@ -16,31 +16,31 @@ app.use(bodyParser.json());
 app.use(helmet());
 
 
-let App = autoLoader.load(__dirname +'/App');
+let App = autoLoader.load(__dirname + '/App');
 global.Controller = App.Controllers;
 global.Model = App.Models;
 global.Mongoose = mongoose;
 global.Schema = mongoose.Schema;
-global.Config = autoLoader.load(__dirname+'/Config');
+global.Config = autoLoader.load(__dirname + '/Config');
 
-mongoose.connect(Config.DB.url + Config.DB.name, (err)=>{
-	if(err)
-		console.log('Unable to connect to '+ Config.DB.name + ' database.');
+mongoose.connect(Config.DB.url + Config.DB.name, (err) => {
+	if (err)
+		console.log('Unable to connect to ' + Config.DB.name + ' database.');
 	else
-		console.log('Successfully connected to '+ Config.DB.name + ' database.')
+		console.log('Successfully connected to ' + Config.DB.name + ' database.')
 });
 
 global.Route = express.Router();
-if(Config.Api.prefix == ""){
-	app.use('/', require(__dirname+'/Routes/'+Config.Api.version+'/routes'));
-}else{
-	app.use('/'+Config.Api.prefix+'/', require(__dirname+'/Routes/'+Config.Api.version+'/routes'));
+if (Config.Api.prefix == "") {
+	app.use('/', require(__dirname + '/Routes/' + Config.Api.version + '/routes'));
+} else {
+	app.use('/' + Config.Api.prefix + '/', require(__dirname + '/Routes/' + Config.Api.version + '/routes'));
 }
 
-	server = app;
+server = app;
 
 
 
-server.listen(Config.App.port, ()=>{
+server.listen(Config.App.port, () => {
 	console.log('Server Successfully Started.');
 });
